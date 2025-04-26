@@ -1,4 +1,3 @@
-const { v4: uuidv4 } = require('uuid');
 const interactor = require('../config/dbconfig');
 const pgModel = require('./model');
 const redisClient = interactor.redisClient;

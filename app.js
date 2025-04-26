@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
 app.use(express.json());
-const port = 3000;
+require('dotenv').config();
+const port = process.env.PORT;
 const pubSub = require('./src/receiver-service');
+
 
 app.post('/receiver', pubSub.receiver);
 

@@ -1,11 +1,12 @@
 const pg = require('pg');
 const redis = require('redis');
+require('dotenv').config();
 
 const pool = new pg.Client({
-    user : `postgres`,
-    password : `admin`,
-    host : `localhost`,
-    port : 5432
+    user : process.env.DB_USER,
+    password : process.env.DB_PASSWORD,
+    host : process.env.DB_HOST,
+    port : process.env.DB_PORT
 })
 
 const connectPostgres = async ()=>{
@@ -18,8 +19,8 @@ const connectPostgres = async ()=>{
 }
 
 const redisClient = redis.createClient({
-    host : `localhost`,
-    port : 6379
+    host : process.env.DB_HOST,
+    port : process.env.REDIS_PORT
 });
 
 

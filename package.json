@@ -1,0 +1,26 @@
+{
+  "name": "backend_assignment",
+  "version": "1.0.0",
+  "description": "pubsub demonstration using redis",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harisahmar7/backend_assignment.git"
+  },
+  "author": "haris",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harisahmar7/backend_assignment/issues"
+  },
+  "homepage": "https://github.com/harisahmar7/backend_assignment#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "pg": "^8.15.6",
+    "redis": "^4.7.0",
+    "uuid": "^11.1.0"
+  }
+}

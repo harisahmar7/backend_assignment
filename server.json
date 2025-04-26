@@ -1,0 +1,7 @@
+{
+    "apps" : [{
+        "name" : "pub_sub_demonstration",
+        "script" : "app.js",
+        "watch" : true
+    }]
+}

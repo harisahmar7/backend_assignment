@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 const port = 3000;
-const pubSub = require('./src/controller');
+const pubSub = require('./src/receiver-service');
 
 app.post('/receiver', pubSub.receiver);
 

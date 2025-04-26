@@ -1,11 +1,12 @@
 const { v4: uuidv4 } = require('uuid');
 const interactor = require('../config/dbconfig');
-const pgModel = require('../src/model');
+const pgModel = require('./model');
 const redisClient = interactor.redisClient;
 
 
 module.exports = {
     async receiver(req, res){
+      try{
         const { user, class: className, age, email } = req.body;
         console.log(req.body);
         if (!user || !className || !age || !email) {
@@ -27,5 +28,12 @@ module.exports = {
         }
     
         res.status(201).json({ status: 'User received and published' });
+      }catch(err){
+        console.log(err);
+        res.status(502).json({
+          msg : -1,
+          error : err
+        })
       }
+    }
 }

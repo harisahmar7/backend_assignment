@@ -2,16 +2,14 @@ const pg = require('pg');
 const redis = require('redis');
 require('dotenv').config();
 
-const pool = new pg.Client({
-    user : process.env.DB_USER,
-    password : process.env.DB_PASSWORD,
-    host : process.env.DB_HOST,
-    port : process.env.DB_PORT
-})
+const connectionString = `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`;
+const client = new pg.Client({
+    connectionString: connectionString,
+  });
 
 const connectPostgres = async ()=>{
     try{
-        await pool.connect();
+        await client.connect();
         console.log("Postgres is connected");
     }catch(err){
         console.error('Error in Postgres Connection', err);
@@ -19,8 +17,7 @@ const connectPostgres = async ()=>{
 }
 
 const redisClient = redis.createClient({
-    host : process.env.DB_HOST,
-    port : process.env.REDIS_PORT
+    url: 'redis://redis:6379'
 });
 
 
@@ -40,4 +37,4 @@ const connectRedis  = async ()=>{
 connectPostgres();
 connectRedis();
 
-module.exports = {pool, redisClient};
+module.exports = {client, redisClient};
